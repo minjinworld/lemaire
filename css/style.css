@@ -1,0 +1,784 @@
+@charset "utf-8";
+#hamburger{
+    display: none;
+    /* 모바일에서 출력 */
+}
+
+#wrap{
+    overflow: hidden;
+}
+
+
+/* 풀페이지 사이트 제작 시 section 안쪽에 컨테이너 박스 하나 만들어서 높이값 100vh로 맞춰주고 시작(반응형에서는 높이값 다시 auto로 변경) */
+.container{
+    height: 100vh;
+}
+
+/* banner */
+.header-area{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 9999;
+    font-size: 0.75rem;
+    color: #fff;
+    text-transform: uppercase;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+
+    transition: 0.3s;
+}
+
+.header-area .header-logo{
+    width: 214px;
+    height: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    transition: 0.3s;
+}
+.header-area .header-logo svg{
+    fill: #fff;
+    opacity: 0.5;
+
+    transition: 0.3s;
+}
+.header-area .header-logo:hover svg{
+    opacity: 1;
+}
+
+.header-area .main-menu,
+.header-area .icon-box{
+    display: flex;
+    margin-right: -24px;
+}
+.header-area .main-menu .menu,
+.header-area .icon-box .icon{
+    margin-right: 24px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    opacity: 0.5;
+    transition: 0.3s;
+}
+.header-area .main-menu .menu:hover,
+.header-area .icon-box .icon:hover{
+    opacity: 1;
+}
+
+/* ----------------------------------------------------- */
+
+/* header active */
+.header-area.active{
+    color: #262320;
+}
+.header-area .header-logo.active{
+    width: 164px;
+    height: 24px;
+}
+.header-area .header-logo svg.active{
+    fill: #262320;
+}
+
+/* ----------------------------------------------------- */
+
+/* sub-menu-box */
+/* 하나씩 가려서 확인해보기 */
+/* #tab1,#tab2,#tab3{
+    display: none;
+} */
+
+/* ----------------------------------------------------- */
+
+/* 서브메뉴 active */
+.sub-menu-box.active{
+    opacity: 1;
+    z-index: 99;
+}
+.sub-menu-box .sub-menu.active{
+    opacity: 1;
+}
+
+/* ----------------------------------------------------- */
+
+.sub-menu-box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #fff;
+
+    opacity: 0;
+    z-index: -1;
+    transition: 0.3s;
+}
+.sub-menu-box .sub-menu{
+    /* (1230 / 1920) * 100 = 64.0625 */
+    width: 64vw;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+
+    /* margin: 0 auto; */
+    /* 서브메뉴 탭 진행시 opacity로 자연스럽게 표현하기 위해서 position으로 위치 겹쳐놓음 */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    opacity: 0;
+    z-index: 99;
+    transition: 0.3s;
+}
+.sub-menu-box .women .menu-left,
+.sub-menu-box .men .menu-left{
+    display: flex;
+
+    margin-right: 13vw;
+    width: calc(100% - 13vw);
+    height: 277px;
+}
+.sub-menu-box .women .sub-menu-detail,
+.sub-menu-box .men .sub-menu-detail{
+    width: 33.333%;
+}
+.sub-menu-box .sub-menu-head{
+    font-size: 0.875rem;
+    color: #1a1a1e;
+    font-weight: 500;
+}
+.sub-menu-box .sub-menu-body{
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #a8a8a8;
+    margin-top: 8px;
+}
+
+.sub-menu-box .women .photo,
+.sub-menu-box .men .photo{
+    width: 236px;
+    height: 277px;
+}
+
+/* 이미지의 포지션을 전부 center top 으로 맞춤 */
+.sub-menu-box .photo img{
+    object-position: center top;
+}
+
+.sub-menu-box .collections .photo{
+    width: 472px;
+    height: 277px;
+}
+.sub-menu-box .collections .menu-left{
+    height: 277px;
+}
+.sub-menu-box .collections .sub-menu-detail{
+    margin-bottom: 8px;
+}
+.sub-menu-box .about .photo{
+    width: 300px;
+    height: 221px;
+}
+.sub-menu-box .about .sub-menu-detail p{
+    margin-top: 12px;
+    font-size: 0.875rem;
+    color: #1a1a1e;
+}
+
+/* ----------------------------------------------------- */
+/* sec1 */
+.sec-1 .container{
+    background: url(../image/sec-1-bg.jpg) no-repeat center;
+    background-size: cover;
+    position: relative;
+}
+
+.sec-1 .canvas{
+    display: flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+/* 애니메이션 구동시켜보기 ^^ */
+.sec-1 .carousel{
+    display: flex;
+    align-items: center;
+    animation: slide 60s linear infinite;
+}
+@keyframes slide {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+.sec-1 .cell{
+    width: 308px;
+    height: 362px;
+    opacity: .6;
+    margin-left: -20px;
+}
+.sec-1 .cell:nth-child(even){
+    width: 402px;
+    height: 498px;
+    opacity: 1;
+
+}
+.sec-1 .cell img{
+    object-position: center top;
+}
+
+.sec-1 .sec-1-txt{
+    font-family: "silk-serif";
+    font-weight: 300;
+    color: #262320;
+    font-size: 2rem;
+    line-height: 1;
+    text-align: center;
+    width: 42vw;
+    display: flex;
+    height: 100%;
+    align-items: flex-end;
+    padding-bottom: 80px;
+    margin: 0 auto;
+}
+
+/* ------------------------------------------------------ */
+/* sec2 */
+.sec-2 .container{
+    background: url(../image/collect02.webp) no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.sec-2 .txt{
+    font-family: "silk-serif";
+    /* font-size vw 단위로 바꿔보기 -> (px수치 * 100) / viewport width */
+    /* (400 * 100) / 1920 = 20.833vw */
+    font-size: 20.833vw;
+    white-space: nowrap;
+    color: #fff;
+    opacity: .6;
+    line-height: 1;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+/* ------------------------------------------------------ */
+/* sec3 */
+.bg{
+    background-color: #e5ddc4;
+}
+.sec-3 .container{
+    padding: 80px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.sec-3 .about-txt-t{
+    font-family: "silk-serif";
+    font-size: 4.5rem;
+    line-height: 1;
+}
+.sec-3 .about-txt-m{
+    text-align: end;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+.sec-3 .about-txt-b{
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+/* ------------------------------------------------------ */
+/* sec4 */
+.sec-4 .container{
+    width: 80vw;
+    margin: 0 auto;   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sec-4 .mask{
+    width: 31vw;
+    height: 75vh;
+    overflow: hidden;
+    border-top-left-radius: 300px;
+    border-top-right-radius: 300px;
+}
+.sec-4 .ceo-txt{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sec-4 .ceo-txt .ceo-head{
+    width: 805px;
+    height: 170px;
+}
+.sec-4 .ceo-txt .ceo-body{
+    width: 24vw;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-top: 16px;
+}
+
+/* ------------------------------------------------------ */
+/* sec5 */
+.sec-5 .container{
+    padding: 0px 32px;
+    height: auto;
+}
+.sec-5 .head-txt{
+    font-family: "silk-serif";
+    font-weight: 300;
+    font-size: 7rem;
+    text-transform: uppercase;
+    text-align: end;
+
+}
+.sec-5 .store-gallery{
+    display: flex;
+    border-bottom: 1px solid #362d26;
+}
+.sec-5 .left{
+    width: calc(100% - 37vw);
+    display: flex;
+    border-right: 1px solid #362d26;
+}
+.sec-5 .right{
+    width: 37vw;
+    display: flex;
+    justify-content: flex-end;
+}
+.sec-5 .box1{
+    width: 544px;
+    height: 748px;
+}
+.sec-5 .left .box1{
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+.sec-5 .box2{
+    width: 467px;
+    height: 643px;
+    margin-left: -20px;
+}
+
+
+/* ------------------------------------------------------ */
+/* footer */
+.footer .container{
+    height: auto;
+    width: 80vw;
+    margin: 0 auto;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 60px 0px;
+}
+.footer .footer-t{
+    display: flex;
+}
+.footer .footer-t .box{
+    width: 20%;
+    height: 300px;
+    padding: 16px;
+}
+
+.footer .footer-t .box h1{
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 16px;
+}
+.footer .footer-t .box p{
+    font-size: 1rem;
+    color: #a8a8a8;
+    margin-bottom: 8px;
+}
+.footer .footer-t input{
+    border: none;
+    outline: none;
+    padding: 8px 0px;
+    border-bottom: 1px solid #dbdbdb;
+    width: 100%;
+    margin-bottom: 40px;
+}
+.footer .footer-t input::placeholder{
+    color: rgba(168, 168, 168, 0.7);
+    opacity: 1;
+    transition: 0.3s;
+}
+.footer .footer-t input:focus::placeholder{
+    opacity: 0;
+}
+.footer .footer-t .footer-btn{
+    width: 100%;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(168, 168, 168, 0.3);
+    font-size: 0.75rem;
+    color: rgba(0, 0, 0, 0.8);
+
+    transition: 0.3s;
+}
+.footer .footer-t .footer-btn:hover{
+    background-color: rgba(168, 168, 168, 0.5);
+}
+
+.footer .footer-b .copyright{
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+}
+
+/* 상단이동버튼 */
+/* 너비 높이 90px 짜리 밖에 부분만 돌아가는 상단이동버튼 만들어주기 */
+/* 가상요소로 너비 높이 70px 짜리 Lemaire_topbtn-i-black.svg이미지 넣어주기 위치는 상단과 좌측에서 10px씩 떨어져있도록 처리 */
+/* 밖에 있는 도형만 돌아가게 처리해보기 */
+
+.top-btn{
+    width: 90px;
+    height: 90px;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    cursor: pointer;
+    z-index: 999;
+
+    display: none;
+}
+.top-btn::after{
+    content: '';
+    background: url(../image/Lemaire_topbtn-i-black.svg) no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 70px;
+    height: 70px;
+}
+.top-btn img{
+    animation: topbtn 30s linear infinite;
+}
+@keyframes topbtn {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ------------------------------------------------------------------------------- */
+/* 반응형 미디어쿼리 */
+@media (max-width: 1800px){
+    .header-area{
+        background-color: rgba(255, 255, 255, 0.5);
+        color: #262320;
+    }
+    .header-area .header-logo svg{
+        fill: #262320;
+        opacity: 1;
+    }
+    .header-area .main-menu .menu,
+    .header-area .icon-box .icon{
+        font-weight: 700;
+        opacity: 1;
+    }
+    .sec-4 .ceo-txt .ceo-head{
+        width: 635px;
+        height: auto;
+    }
+
+    .sec-5 .store-gallery{
+        display: block;
+        border: 0;
+    }
+    .sec-5 .left{
+        border: 0;
+        width: 100%;
+    }
+    .sec-5 .left .box1{
+        margin-top: 0;
+        width: 50%;
+        height: 700px;
+    }
+    .sec-5 .left .box2{
+        margin-left: 20px;
+        width: 50%;
+        height: 700px;
+    }
+    .sec-5 .right{
+        display: none;
+    }
+}
+
+/* ------------------------------------------------------------------------------- */
+@media (max-width: 1400px){
+    .sec-3 .about-txt-t{
+        font-size: 3.75vw;
+    }
+
+    .sec-4 .container{
+        display: block;
+        height: auto;
+        padding: 100px 0px;
+    }
+    .sec-4 .mask{
+        width: 50%;
+    }
+    .sec-4 .ceo-txt{
+        margin-top: 20px;
+    }
+    .sec-4 .ceo-txt .ceo-body{
+        width: 100%;
+        line-height: 1.3;
+    }
+
+    .footer .container{
+        width: 100%;
+        padding: 32px;
+    }
+    .footer .footer-t{
+        flex-wrap: wrap;
+    }
+}
+
+/* ------------------------------------------------------------------------------- */
+@media (max-width: 1000px){
+    .sub-menu-box,
+    .header-area .icon-box{
+        display: none;
+    }
+    .header-area .main-menu{
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.5);
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        color: #1a1a1e;
+        font-size: 8vw;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 20% 10%;
+        /* 좌우 1000px 기준 100px */
+        transform: translateY(-100%);
+        transition: 0.3s;
+    }
+    #hamburger{
+        display: block;
+        width: 20px;
+        height: 10px;
+        z-index: 99999;
+        position: relative;
+    }
+    #hamburger span{
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #262320;
+        transition: 0.3s;
+    }
+    #hamburger span:first-child{
+        top: 0;
+        left: 0;
+    }
+    #hamburger span:last-child{
+        top: 100%;
+        left: 0;
+    }
+
+    /* --------------------------------------------------------------- */
+    /* 햄버거메뉴 active */
+    .header-area .main-menu.active{
+        transform: translateY(0);
+    }
+    #hamburger.active span:first-child{
+        transform: translateY(10px);
+    }
+    #hamburger.active span:last-child{
+        transform: translateY(-10px);
+    }
+    /* --------------------------------------------------------------- */
+
+    .sec-1 .container{
+        height: auto;
+        background: none;
+    }
+    .sec-1 .canvas{
+        position: static;
+        transform: translateY(0);
+        display: block;
+    }
+    .sec-1 .carousel{
+        animation: none;
+        flex-wrap: wrap;
+    }
+    .sec-1 .cell,
+    .sec-1 .cell:nth-child(even){
+        width: 50%;
+        height: 740px;
+        margin-left: 0;
+        opacity: 1;
+    }
+    .sec-1 .cell:last-child,
+    .sec-1 .carousel.box2,
+    .sec-1 .sec-1-txt{
+        display: none;
+    }
+
+    .sec-3 .about-txt-b{
+        font-size: 0.8rem;
+    }
+
+    .sec-4 .mask{
+        width: 100%;
+        border-top-left-radius: 400px;
+        border-top-right-radius: 400px;
+        height: 85vh;
+    }
+
+    .sec-4 .ceo-txt .ceo-body{
+        line-height: 1.5;
+    }
+
+
+    .sec-5 .container{
+        padding: 100px 32px;
+    }
+    .sec-5 .head-txt{
+        font-size: 5rem;
+    }   
+
+    .footer .footer-t .box{
+        width: 50%;
+        height: auto;
+        margin-bottom: 32px;
+    }
+
+    .top-btn{
+        right: 32px;
+        bottom: 32px;
+    }
+
+}
+
+/* ------------------------------------------------------------------------------- */
+@media (max-width: 760px){
+    .header-area{
+        height: 50px;
+        padding: 0px 16px;
+    }
+    .header-area .header-logo{
+        width: 164px;
+        height: 24px;
+    }
+    .sec-1 .cell,
+    .sec-1 .cell:nth-child(even){
+        width: 100%;
+        height: 80vh;
+    }
+
+    .sec-2 .container{
+        height: 700px;
+    }
+
+    .sec-3 .container{
+        padding: 68px 16px;
+    }
+
+    .sec-3 .about-txt-t,
+    .sec-3 .about-txt-m{
+        margin-bottom: 60px;
+    }
+
+    .sec-4 .container{
+        width: 100%;
+        padding: 100px 16px;
+    }
+    .sec-4 .ceo-txt{
+        margin-top: 32px;
+    }
+
+    .sec-5 .container{
+        padding: 50px 16px;
+    }
+    .sec-5 .head-txt{
+        text-align: left;
+    }
+    .sec-5 .left .box1,
+    .sec-5 .left .box2{
+        height: 500px;
+    }
+
+    .footer .container{
+        padding: 50px 16px;
+    }
+    .footer .footer-t .box{
+        width: 100%;
+        border-top: 1px solid #dbdbdb;
+        padding-top: 32px;
+    }
+}
+
+/* ------------------------------------------------------------------------------- */
+@media (max-width: 525px){
+    .sec-2 .container{
+        background-attachment: scroll;
+    }
+    .sec-3 .about-txt-t{
+        font-size: 1.8rem;
+    }
+    .sec-4 .mask{
+        height: 60vh;
+    }
+    .sec-4 .ceo-txt .ceo-head{
+        width: 100%;
+        /* ****반응형 잡을때 너비값 계속해서 설정하지 마세요! 모바일에서는 특히나 유동값 사용할것 객체 너비 100% 채워주고 너무 크다면 전체 섹션에다가 패딩으로 여백줄것! */
+    }
+    .sec-4 .ceo-txt .ceo-body{
+        font-size: 0.8rem;
+    }
+    .sec-5 .head-txt{
+        font-size: 3rem;
+    }
+    .sec-5 .left{
+        flex-wrap: wrap;
+    }
+    .sec-5 .left .box1,
+    .sec-5 .left .box2{
+        width: 100%;
+    }
+    .sec-5 .left .box2{
+        margin-left: 0;
+    }
+
+    .footer .container{
+        padding: 50px 16px 0;
+    }
+    .footer .footer-t .box{
+        margin-bottom: 0;
+        padding: 16px 0;
+    }
+    .footer .footer-t .box h1,
+    .footer .footer-t .box p{
+        font-size: 0.8rem;
+    }
+    .footer .footer-b{
+        margin-top: 32px;
+        margin-bottom: 16px;
+    }
+}   
